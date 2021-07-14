@@ -29,10 +29,6 @@ requirements:
 test:
   imports:
     - agateexcel
-  requires:
-    - pip
-  commands:
-    - pip check
 
 about:
   home: https://agate-excel.readthedocs.org/
