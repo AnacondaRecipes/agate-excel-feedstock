@@ -1,25 +1,25 @@
 {% set name = "agate-excel" %}
-{% set version = "0.4.1" %}
+{% set version = "0.4.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 28426618c90747111e6d566e983d838f1e2fae641ea6970d7acb0e9d4b384091
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: eed1dc6239f0e96720d962dc1bdfb4496e19687332c827fd8b1e587a917ea202
 
 build:
   number: 0
-  skip: true  # [py<38] 
+  skip: true  # [py<310] 
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - pip
     - python
-    - wheel
     - setuptools
+    - wheel
   run:
     - python
     - olefile
@@ -41,13 +41,13 @@ test:
     - pytest tests -v
 
 about:
-  home: https://agate-excel.readthedocs.org/
+  home: https://agate-excel.readthedocs.org
   license_file: COPYING
   license: MIT
   license_family: MIT
   summary: agate-excel adds read support for Excel files (xls and xlsx) to agate.
   description: agate-excel adds read support for Excel files (xls and xlsx) to agate.
-  doc_url: https://agate-excel.readthedocs.org/
+  doc_url: https://agate-excel.readthedocs.org
   dev_url: https://github.com/wireservice/agate-excel
 
 extra:
