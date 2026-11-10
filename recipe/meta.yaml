@@ -1,5 +1,5 @@
 {% set name = "agate-excel" %}
-{% set version = "0.4.2" %}
+{% set version = "0.4.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,19 +7,18 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: eed1dc6239f0e96720d962dc1bdfb4496e19687332c827fd8b1e587a917ea202
+  sha256: c510b3cec7d679e254a257cae852b67191286b31d55165d8116d5802afbc92fc
 
 build:
   number: 0
-  skip: true  # [py<310] 
+  skip: true  # [py<310]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - pip
     - python
-    - setuptools
-    - wheel
+    - setuptools >=61
   run:
     - python
     - olefile
